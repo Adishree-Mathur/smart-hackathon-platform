@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Hackathon Platform</title>
+
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Hackstorm </h1>
+            <nav class="nav">
+                <a href="#dashboard" class="nav-link">Dashboard</a>
+                <a href="#teams" class="nav-link">Teams</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#resources" class="nav-link">Resources</a>
+                <a href="#mentorship" class="nav-link">Mentorship</a>
+            </nav>
+            <div class="user-profile">
+                <img src="assets/user-avatar.png" alt="User" class="avatar">
+                <span class="username">Participant</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section id="dashboard" class="section dashboard-section">
+            <div class="container">
+                <h2>Hackathon Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="card create-hackathon">
+                        <h3>Create New Hackathon</h3>
+                        <form id="hackathonForm" class="form">
+                            <div class="form-group">
+                                <label for="hackathonName">Name</label>
+                                <input type="text" id="hackathonName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="hackathonTheme">Theme</label>
+                                <input type="text" id="hackathonTheme" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="startDate">Start Date</label>
+                                <input type="date" id="startDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="endDate">End Date</label>
+                                <input type="date" id="endDate" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Create Hackathon</button>
+                        </form>
+                    </div>
+
+                    <div class="card register-participant">
+                        <h3>Register as Participant</h3>
+                        <form id="participantForm" class="form">
+                            <div class="form-group">
+                                <label for="participantName">Name</label>
+                                <input type="text" id="participantName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="participantEmail">Email</label>
+                                <input type="email" id="participantEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="participantSkills">Skills (comma separated)</label>
+                                <input type="text" id="participantSkills" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="participantInterests">Interests</label>
+                                <input type="text" id="participantInterests" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="participantExperience">Experience Level</label>
+                                <select id="participantExperience" required>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                    </div>
+
+                    <div class="card team-suggestions">
+                        <h3>AI Team Suggestions</h3>
+                        <div id="teamSuggestions" class="suggestions-container">
+                            <p>Register as a participant to get team suggestions</p>
+                        </div>
+                        <button id="getTeamSuggestions" class="btn btn-secondary">Get Team Suggestions</button>
+                    </div>
+
+                    <div class="card project-ideas">
+                        <h3>AI Project Ideas</h3>
+                        <div id="projectIdeas" class="ideas-container">
+                            <p>Create or join a hackathon to get project ideas</p>
+                        </div>
+                        <button id="getProjectIdeas" class="btn btn-secondary">Generate Ideas</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mentorship" class="section mentorship-section">
+            <div class="container">
+                <h2>AI Mentorship</h2>
+                <div class="mentorship-container">
+                    <div class="mentorship-chat">
+                        <div id="chatMessages" class="chat-messages">
+                            <div class="message bot">
+                                <p>Hello! I'm your AI mentor. How can I help you with your hackathon project today?</p>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="mentorQuestion" placeholder="Ask me anything about coding...">
+                            <button id="askMentor" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mentorship-tips">
+                        <h3>Quick Tips</h3>
+                        <ul>
+                            <li>How to connect to a database</li>
+                            <li>How to deploy a Flask app</li>
+                            <li>How to implement authentication</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="code-review" class="section code-review-section">
+            <div class="container">
+                <h2>AI Code Review</h2>
+                <div class="code-review-container">
+                    <div class="code-editor">
+                        <textarea id="codeInput" placeholder="Paste your code here for AI review..."></textarea>
+                        <button id="reviewCode" class="btn btn-primary">Review Code</button>
+                    </div>
+                    <div id="codeReviewResults" class="review-results">
+                        <div class="review-section">
+                            <h4>Errors</h4>
+                            <ul id="codeErrors"></ul>
+                        </div>
+                        <div class="review-section">
+                            <h4>Suggestions</h4>
+                            <ul id="codeSuggestions"></ul>
+                        </div>
+                        <div class="review-section">
+                            <h4>Quality Score</h4>
+                            <div class="score-meter">
+                                <div id="qualityScore" class="score-fill" style="width: 0%"></div>
+                            </div>
+                            <span id="qualityScoreText">0/5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2023 Smart AI-Driven Hackathon Platform</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
